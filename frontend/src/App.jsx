@@ -3,9 +3,28 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomeScreen from "./screen/HomeScreen";
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+        projects: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+  },
+});
+
 const client = new ApolloClient({
   uri: "http://localhost:8080/graphql",
-  cache: new InMemoryCache(),
+  cache,
 });
 
 const App = () => {
