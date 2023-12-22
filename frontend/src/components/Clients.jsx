@@ -17,7 +17,7 @@ const Clients = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
-              <th>Phone</th>
+              <th className="d-none d-md-table-cell">Phone</th>
               <th></th>
             </tr>
           </thead>

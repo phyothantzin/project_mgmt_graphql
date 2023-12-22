@@ -2,6 +2,8 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomeScreen from "./screen/HomeScreen";
+import Project from "./screen/Project";
+import NotFound from "./screen/NotFound";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -35,6 +37,8 @@ const App = () => {
         <div className="container">
           <Routes>
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/projects/:id" element={<Project />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>
